@@ -18,3 +18,10 @@ export interface Format {
   desc: string;
   highlight: string;
 }
+
+export const formats: Format[] = [
+  { id: "yolo", name: "YOLO26", available: true, desc: "TXT annotations and YAML config", highlight: "YOLO26" },
+  { id: "yolo", name: "YOLOv8", available: true, desc: "TXT annotations and YAML config", highlight: "YOLOv8" },
+  { id: "yolo", name: "YOLOv5", available: true, desc: "TXT annotations and YAML config", highlight: "YOLOv5" },
+  { id: "coco", name: "COCO JSON", available: true, desc: "COCO JSON annotations", highlight: "EfficientDet Pytorch and Detectron 2" },
+];
