@@ -1,6 +1,18 @@
 {
   "name": "ndjson-converter",
   "version": "0.1.0",
+  "description": "Desktop app for converting NDJSON annotation exports to ML formats",
+  "license": "MIT",
+  "author": "amanharshx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amanharshx/yolo-ndjson-zip"
+  },
+  "homepage": "https://github.com/amanharshx/yolo-ndjson-zip",
+  "bugs": {
+    "url": "https://github.com/amanharshx/yolo-ndjson-zip/issues"
+  },
+  "keywords": ["ndjson", "converter", "yolo", "coco", "pascal-voc", "tauri", "machine-learning", "annotation"],
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +22,11 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-opener": "^2",
+    "@tauri-apps/plugin-dialog": "^2",
+    "@tauri-apps/plugin-fs": "^2"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -20,6 +36,7 @@
     "@vitejs/plugin-react": "^4.6.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.563.0",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
     "typescript": "~5.8.3",
