@@ -22,6 +22,22 @@ pub struct BoundingBox {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PoseAnnotation {
+    pub class_id: i32,
+    pub bbox_x: f64,
+    pub bbox_y: f64,
+    pub bbox_w: f64,
+    pub bbox_h: f64,
+    pub keypoints: Vec<(f64, f64)>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SegmentAnnotation {
+    pub class_id: i32,
+    pub points: Vec<(f64, f64)>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DatasetMetadata {
     #[serde(default)]
     pub r#type: String,
@@ -37,6 +53,8 @@ pub struct DatasetMetadata {
     pub url: String,
     #[serde(default)]
     pub class_names: HashMap<String, String>,
+    #[serde(default)]
+    pub kpt_shape: Option<Vec<i32>>,
     #[serde(default)]
     pub version: i32,
 }
@@ -93,6 +111,89 @@ impl ImageEntry {
                 } else {
                     None
                 }
+            })
+            .collect()
+    }
+
+    pub fn get_pose_annotations(&self, kpt_shape: Option<&[i32]>) -> Vec<PoseAnnotation> {
+        let Some(annotations) = &self.annotations else {
+            return Vec::new();
+        };
+
+        let Some(poses) = annotations.get("pose") else {
+            return Vec::new();
+        };
+
+        let Some(pose_array) = poses.as_array() else {
+            return Vec::new();
+        };
+
+        let num_keypoints = kpt_shape.and_then(|s| s.first()).copied().unwrap_or(17) as usize;
+
+        pose_array
+            .iter()
+            .filter_map(|pose_data| {
+                let arr = pose_data.as_array()?;
+                let expected_len = 1 + num_keypoints * 2 + 4;
+                if arr.len() < expected_len {
+                    return None;
+                }
+
+                let class_id = arr[0].as_i64()? as i32;
+
+                let mut keypoints = Vec::with_capacity(num_keypoints);
+                for i in 0..num_keypoints {
+                    let kp_x = arr[1 + i * 2].as_f64()?;
+                    let kp_y = arr[1 + i * 2 + 1].as_f64()?;
+                    keypoints.push((kp_x, kp_y));
+                }
+
+                let bbox_start = 1 + num_keypoints * 2;
+                Some(PoseAnnotation {
+                    class_id,
+                    bbox_x: arr[bbox_start].as_f64()?,
+                    bbox_y: arr[bbox_start + 1].as_f64()?,
+                    bbox_w: arr[bbox_start + 2].as_f64()?,
+                    bbox_h: arr[bbox_start + 3].as_f64()?,
+                    keypoints,
+                })
+            })
+            .collect()
+    }
+
+    pub fn get_segment_annotations(&self) -> Vec<SegmentAnnotation> {
+        let Some(annotations) = &self.annotations else {
+            return Vec::new();
+        };
+
+        let Some(segments) = annotations.get("segments") else {
+            return Vec::new();
+        };
+
+        let Some(seg_array) = segments.as_array() else {
+            return Vec::new();
+        };
+
+        seg_array
+            .iter()
+            .filter_map(|seg_data| {
+                let arr = seg_data.as_array()?;
+                if arr.len() < 7 {
+                    return None;
+                }
+
+                let class_id = arr[0].as_i64()? as i32;
+                let mut points = Vec::new();
+
+                for i in (1..arr.len()).step_by(2) {
+                    if i + 1 < arr.len() {
+                        let x = arr[i].as_f64()?;
+                        let y = arr[i + 1].as_f64()?;
+                        points.push((x, y));
+                    }
+                }
+
+                Some(SegmentAnnotation { class_id, points })
             })
             .collect()
     }
