@@ -115,6 +115,25 @@ impl ImageEntry {
             .collect()
     }
 
+    pub fn get_classifications(&self) -> Vec<i32> {
+        let Some(annotations) = &self.annotations else {
+            return Vec::new();
+        };
+
+        let Some(classification) = annotations.get("classification") else {
+            return Vec::new();
+        };
+
+        classification
+            .as_array()
+            .map(|arr| {
+                arr.iter()
+                    .filter_map(|v| v.as_i64().map(|n| n as i32))
+                    .collect()
+            })
+            .unwrap_or_default()
+    }
+
     pub fn get_pose_annotations(&self, kpt_shape: Option<&[i32]>) -> Vec<PoseAnnotation> {
         let Some(annotations) = &self.annotations else {
             return Vec::new();
@@ -197,6 +216,7 @@ impl ImageEntry {
             })
             .collect()
     }
+
 }
 
 #[derive(Debug, Clone)]
