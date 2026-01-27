@@ -1,6 +1,20 @@
+<div align="center">
+
 # YOLO NDJSON Converter
 
-> Convert YOLO NDJSON annotation exports to popular ML formats - fast, private, and cross-platform.
+**Convert YOLO NDJSON annotation exports to popular ML formats - fast, private, and cross-platform.**
+
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Platforms](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](#installation)
+[![Built with Tauri](https://img.shields.io/badge/Built%20with-Tauri%20v2-ffc131.svg)](https://v2.tauri.app)
+[![Rust](https://img.shields.io/badge/Rust-%23dea584.svg?logo=rust&logoColor=black)](#tech-stack)
+[![TypeScript](https://img.shields.io/badge/TypeScript-%23007ACC.svg?logo=typescript&logoColor=white)](#tech-stack)
+
+<br>
+
+<img src="assets/screenshot.png" width="720" alt="YOLO NDJSON Converter welcome screen">
+
+</div>
 
 ## Features
 
@@ -9,6 +23,7 @@
 - **Parallel Downloads** - 100 concurrent connections for fast image fetching
 - **Privacy-First** - Everything runs locally; your data never leaves your device
 - **Cross-Platform** - macOS, Windows, and Linux
+- **~5 MB Binary** - Tauri + Rust keeps the app tiny compared to Electron alternatives
 
 ## Supported Formats
 
@@ -27,19 +42,54 @@
 | CreateML JSON | 🔜 | Detection, Classification |
 | TFRecord | 🔜 | Detection |
 
+## Installation
+
+### Quick Install
+
+**macOS / Linux:**
+
+```bash
+curl -fsSL https://yolondjson.zip/install.sh | bash
+```
+
+Or download the latest release directly from [GitHub Releases](https://github.com/amanharshx/yolo-ndjson-zip/releases).
+
+### Build from Source
+
+**Prerequisites:** [Rust](https://rustup.rs/), [Bun](https://bun.sh/), [Tauri v2 prerequisites](https://v2.tauri.app/start/prerequisites/)
+
+```bash
+git clone https://github.com/amanharshx/yolo-ndjson-zip.git
+cd yolo-ndjson-zip
+bun install
+bun run tauri dev        # development
+bun run tauri build      # production binary
+```
+
+## NDJSON Input Format
+
+The app expects newline-delimited JSON with this structure:
+
+```jsonl
+{"type":"dataset","task":"detect","name":"My Dataset","class_names":{"0":"cat","1":"dog"}}
+{"type":"image","file":"img1.jpg","url":"https://...","width":640,"height":480,"split":"train","annotations":{"bboxes":[[0,0.5,0.5,0.2,0.3]]}}
+{"type":"image","file":"img2.jpg","url":"https://...","width":640,"height":480,"split":"valid","annotations":{"bboxes":[[1,0.3,0.4,0.1,0.2]]}}
+```
+
 ## Tech Stack
 
 - **Frontend** - React 19 + TypeScript, Tailwind CSS, Vite
 - **Backend** - Rust + Tauri v2
 - **Package Manager** - Bun
 
-## Development
+## Contributing
 
-```bash
-bun install
-bun run tauri dev
-```
+Contributions are welcome! Whether it's a bug fix, new format, or documentation improvement - every bit helps. Please read the [Contributing Guide](CONTRIBUTING.md) before opening a pull request.
+
+## Security
+
+To report a security vulnerability, please see [SECURITY.md](SECURITY.md).
 
 ## License
 
-MIT
+This project is licensed under the [MIT License](LICENSE).
