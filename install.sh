@@ -51,7 +51,7 @@ download_asset() {
   local url
   url="$(echo "$RELEASE_JSON" | grep '"browser_download_url"' | grep "$pattern" | head -1 | sed 's/.*"\(https[^"]*\)".*/\1/')"
   [ -n "$url" ] || error "Could not find asset matching '$pattern' in release $TAG"
-  info "Downloading: $url"
+  info "Downloading: $url" >&2
   curl -fsSL -o "$TMPDIR/$(basename "$url")" "$url"
   echo "$TMPDIR/$(basename "$url")"
 }
