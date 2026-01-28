@@ -54,6 +54,31 @@ curl -fsSL https://yolondjson.zip/install.sh | bash
 
 Or download the latest release directly from [GitHub Releases](https://github.com/amanharshx/yolo-ndjson-zip/releases).
 
+### Platform Notes
+
+> **Note:** The app is not yet code-signed (Apple Developer account costs $99/year, Windows EV certificate ~$300/year). I'm planning to get these when I can afford them. For now, you may see security warnings:
+
+<details>
+<summary><b>macOS</b> — "App is damaged and can't be opened"</summary>
+
+Run this command in Terminal after installing:
+```bash
+xattr -cr "/Applications/YOLO NDJSON Converter.app"
+```
+Then open the app again.
+
+</details>
+
+<details>
+<summary><b>Windows</b> — "Windows protected your PC" (SmartScreen)</summary>
+
+1. Click **"More info"**
+2. Click **"Run anyway"**
+
+Or: Right-click the `.exe` → **Properties** → Check **"Unblock"** → **Apply**
+
+</details>
+
 ### Build from Source
 
 **Prerequisites:** [Rust](https://rustup.rs/), [Bun](https://bun.sh/), [Tauri v2 prerequisites](https://v2.tauri.app/start/prerequisites/)

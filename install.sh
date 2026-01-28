@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# -----------------------------------------------------------------------------
+# NOTE: This app is not yet code-signed with an Apple Developer certificate.
+# macOS will show a "damaged" warning without it. This script automatically
+# removes the quarantine flag so the app runs without issues.
+#
+# I'm planning to get an Apple Developer account for proper code signing,
+# but I don't have the funds for it right now. Contributions welcome!
+# -----------------------------------------------------------------------------
+
 REPO="amanharshx/YOLO-Ndjson-Zip"
 APP_NAME="YOLO NDJSON Converter"
 
@@ -60,6 +69,10 @@ if [ "$PLATFORM" = "macos" ]; then
   rm -rf "/Applications/$(basename "$APP_SRC")" 2>/dev/null || true
   cp -R "$APP_SRC" /Applications/
   hdiutil detach "$MOUNT_POINT" -quiet 2>/dev/null
+
+  # Remove macOS quarantine flag (app is not code-signed yet)
+  info "Removing quarantine flag..."
+  xattr -cr "/Applications/$(basename "$APP_SRC")" 2>/dev/null || true
 
   info "Done! $APP_NAME has been installed to /Applications."
   info "You can launch it from Spotlight or the Applications folder."
