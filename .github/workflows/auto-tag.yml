@@ -3,12 +3,19 @@ name: Auto Tag
 on:
   push:
     branches: [main]
-    paths:
-      - 'package.json'
+    paths-ignore:
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'CODE_OF_CONDUCT.md'
+      - 'SECURITY.md'
+      - 'LICENSE'
+      - '.github/**'
+      - 'dist/**'
 
 jobs:
   tag:
     runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
     permissions:
       contents: write
     steps:
@@ -16,11 +23,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get version from package.json
+      - name: Bump version in package.json
         id: version
         run: |
           VERSION=$(jq -r .version package.json)
-          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+          NEW_VERSION="$MAJOR.$MINOR.$((PATCH+1))"
+          jq --arg v "$NEW_VERSION" '.version=$v' package.json > package.json.tmp
+          mv package.json.tmp package.json
+          echo "version=v$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.version }}"
+          git push origin main
 
       - name: Check if tag exists
         id: check
@@ -34,7 +53,5 @@ jobs:
       - name: Create and push tag
         if: steps.check.outputs.exists == 'false'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git tag -a "${{ steps.version.outputs.version }}" -m "Release ${{ steps.version.outputs.version }}"
           git push origin "${{ steps.version.outputs.version }}"

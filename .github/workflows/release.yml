@@ -3,6 +3,11 @@ name: Release
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release'
+        required: true
 
 jobs:
   release:
@@ -24,6 +29,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -57,9 +64,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_name }}
-          releaseName: 'YOLO NDJSON Converter ${{ github.ref_name }}'
-          releaseBody: 'See the assets below to download the installer for your platform.'
+          tagName: ${{ inputs.tag || github.ref_name }}
+          releaseName: '${{ inputs.tag || github.ref_name }}'
+          releaseGenerateReleaseNotes: true
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
