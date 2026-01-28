@@ -59,7 +59,7 @@ download_asset() {
 if [ "$PLATFORM" = "macos" ]; then
   ASSET_PATH="$(download_asset "${ARCH_LABEL}.*\.dmg")"
   info "Mounting disk image..."
-  MOUNT_POINT="$(hdiutil attach "$ASSET_PATH" -nobrowse -quiet | tail -1 | awk '{print $NF}')" \
+  MOUNT_POINT="$(hdiutil attach "$ASSET_PATH" -nobrowse | grep -o '/Volumes/.*')" \
     || error "Failed to mount DMG"
 
   APP_SRC="$(find "$MOUNT_POINT" -name '*.app' -maxdepth 1 | head -1)"
