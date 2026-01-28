@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { revealItemInDir } from "@tauri-apps/plugin-opener";
+import { getCurrentWebview } from "@tauri-apps/api/webview";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -30,12 +32,39 @@ export function ConverterScreen({ onBack }: { onBack: () => void }) {
     elapsedSeconds,
     selectFile,
     removeFile,
+    setFileFromPath,
     handleConvert,
     resetState,
     getProgressPercentage,
     formatElapsedTime,
     getDownloadRate,
   } = useConverter();
+
+  const [isDragging, setIsDragging] = useState(false);
+
+  useEffect(() => {
+    const webview = getCurrentWebview();
+    const unlisten = webview.onDragDropEvent((event) => {
+      if (event.payload.type === "over") {
+        setIsDragging(true);
+      } else if (event.payload.type === "leave") {
+        setIsDragging(false);
+      } else if (event.payload.type === "drop") {
+        setIsDragging(false);
+        const paths = event.payload.paths;
+        if (paths.length > 0) {
+          const file = paths[0];
+          if (file.endsWith(".ndjson") || file.endsWith(".jsonl")) {
+            setFileFromPath(file);
+          }
+        }
+      }
+    });
+
+    return () => {
+      unlisten.then((fn) => fn());
+    };
+  }, [setFileFromPath]);
 
   // When no file selected, show centered upload card
   if (!selectedFile) {
@@ -45,7 +74,7 @@ export function ConverterScreen({ onBack }: { onBack: () => void }) {
 
         <main className="flex flex-1 items-center justify-center px-4">
           <Card
-            className="w-full max-w-md cursor-pointer border-2 border-dashed p-10 text-center transition-colors hover:border-primary/50"
+            className={`w-full max-w-md cursor-pointer border-2 border-dashed p-10 text-center transition-colors hover:border-primary/50 ${isDragging ? "border-primary bg-primary/5" : ""}`}
             onClick={selectFile}
           >
             <div className="flex flex-col items-center gap-4">
@@ -54,7 +83,7 @@ export function ConverterScreen({ onBack }: { onBack: () => void }) {
               </div>
               <div>
                 <p className="text-lg font-medium">
-                  Click to select NDJSON file
+                  {isDragging ? "Drop file here" : "Click or drag NDJSON file"}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Supports .ndjson and .jsonl files

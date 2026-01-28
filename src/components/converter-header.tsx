@@ -11,7 +11,7 @@ export function ConverterHeader({ onBack }: { onBack: () => void }) {
           <ArrowRight className="h-4 w-4 rotate-180" />
           Back
         </button>
-        <h1 className="text-sm font-semibold">YOLO NDJSON Converter</h1>
+        <div />
         <div className="w-16" />
       </div>
     </header>

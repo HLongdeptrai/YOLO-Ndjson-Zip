@@ -25,9 +25,9 @@ export function FormatButton({
         className={cn(
           "rounded-lg border-2 px-4 py-2 text-sm font-medium transition-all",
           isSelected
-            ? "border-primary bg-primary/10 text-primary"
+            ? "border-primary bg-primary/10 text-primary cursor-pointer"
             : format.available
-              ? "border-border text-foreground hover:border-primary/50 hover:bg-primary/5"
+              ? "border-border text-foreground hover:border-primary/50 hover:bg-primary/5 cursor-pointer"
               : "border-border/70 text-muted-foreground/70 cursor-not-allowed",
           disabled && !isSelected && "cursor-not-allowed opacity-50 hover:border-border hover:bg-transparent"
         )}

@@ -50,6 +50,13 @@ export function useConverter() {
     setSelectedFormat(null);
   };
 
+  const setFileFromPath = (path: string) => {
+    setSelectedFile(path);
+    setSelectedFileName(path.split(/[/\\]/).pop() || path);
+    setResult(null);
+    setError(null);
+  };
+
   const handleConvert = async () => {
     if (!selectedFile || !selectedFormat) return;
 
@@ -140,6 +147,7 @@ export function useConverter() {
     elapsedSeconds,
     selectFile,
     removeFile,
+    setFileFromPath,
     handleConvert,
     resetState,
     getProgressPercentage,
