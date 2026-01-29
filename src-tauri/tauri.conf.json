@@ -8,7 +8,7 @@
       "endpoints": [
         "https://github.com/amanharshx/yolo-ndjson-zip/releases/latest/download/latest.json"
       ],
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDBFNTM3MTY4NEFGN0U1NUIKUldSYjVmZEthSEZURHFLRDdKWXViSFNNQXNzUGFoOG9ZMldzUnlId2VZRU81Yys0eXMzWWwzWEUK"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDVCNThBNTYxMjM1MDFDRTAKUldUZ0hGQWpZYVZZVytKczA2TEZKbysrYUpSaXJUQm96djdqK0FWbXV3b2l4bGN0TTkxMGFhRUoK"
     }
   },
   "build": {
