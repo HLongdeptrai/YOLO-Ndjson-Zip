@@ -23,7 +23,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Bump version in package.json
+      - name: Bump versions
         id: version
         run: |
           VERSION=$(jq -r .version package.json)
@@ -31,13 +31,16 @@ jobs:
           NEW_VERSION="$MAJOR.$MINOR.$((PATCH+1))"
           jq --arg v "$NEW_VERSION" '.version=$v' package.json > package.json.tmp
           mv package.json.tmp package.json
+          jq --arg v "$NEW_VERSION" '.version=$v' src-tauri/tauri.conf.json > src-tauri/tauri.conf.json.tmp
+          mv src-tauri/tauri.conf.json.tmp src-tauri/tauri.conf.json
+          perl -pi -e "s/^version = \\\".*\\\"/version = \\\"$NEW_VERSION\\\"/" src-tauri/Cargo.toml
           echo "version=v$NEW_VERSION" >> $GITHUB_OUTPUT
 
       - name: Commit version bump
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add package.json
+          git add package.json src-tauri/tauri.conf.json src-tauri/Cargo.toml
           git commit -m "chore: bump version to ${{ steps.version.outputs.version }}"
           git push origin main
 
