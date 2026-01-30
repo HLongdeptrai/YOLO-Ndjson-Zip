@@ -73,8 +73,7 @@ jobs:
         with:
           tagName: ${{ inputs.tag || github.ref_name }}
           releaseName: '${{ inputs.tag || github.ref_name }}'
-          releaseGenerateReleaseNotes: true
+          generateReleaseNotes: true
           releaseDraft: false
           prerelease: false
-          args: ${{ matrix.args }}
-          configPath: src-tauri/tauri.release.conf.json
+          args: ${{ matrix.args }} --config src-tauri/tauri.release.conf.json
